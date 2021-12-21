@@ -20,7 +20,7 @@
     <title>Andrey Goncharov</title>
     <meta
       name="description"
-      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source Enthusiast. Founder of BeerJS Voronezh."
+      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source enthusiast."
     />
 
     <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png" />
@@ -52,7 +52,7 @@
     <meta property="og:image" content="https://goncharov.page/og-icon.jpg" />
     <meta
       property="og:description"
-      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source Enthusiast. Founder of BeerJS Voronezh."
+      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source enthusiast."
     />
     <meta property="og:site_name" content="goncharov.page" />
     <meta property="og:locale" content="en_US" />
@@ -66,7 +66,7 @@
     <meta name="twitter:title" content="Andrey Goncharov" />
     <meta
       name="twitter:description"
-      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source Enthusiast. Founder of BeerJS Voronezh."
+      content="Senior software engineer at Facebook. OMSCS student at Georgia Tech. Full-stack TypeScript and JavaScript developer. Speaker. Writer. Open-source enthusiast."
     />
     <meta name="twitter:image" content="https://goncharov.page/og-icon.jpg" />
 
@@ -84,7 +84,6 @@
     <style>
       html {
         height: 100%;
-        font-size: 20px;
       }
       body {
         min-height: 100%;
@@ -94,7 +93,7 @@
         font-family: "Share Tech Mono", monospace;
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
       }
 
       a {
@@ -107,189 +106,310 @@
         opacity: 0.7;
       }
 
-      aside {
-        position: fixed;
-        top: 0;
-        height: 100%;
-        left: 0;
-        z-index: -1;
-      }
-      aside figure {
-        margin: 0;
-        height: 100%;
-      }
-      aside figure img {
-        min-height: 100%;
-        max-width: 100%;
-        height: auto;
-        width: auto;
-        object-position: center top;
-        object-fit: cover;
+      header {
+        margin-bottom: 4rem;
       }
 
-      .location {
-        font-size: 0.7rem;
-        margin-top: 0;
-      }
-      .location svg {
-        height: 0.7rem;
-        width: 0.7rem;
-        vertical-align: baseline;
-        margin-left: 0.5rem;
-      }
-
-      .link {
-        text-decoration: underline;
-      }
-
-      main {
-        text-align: right;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100%;
-        box-sizing: border-box;
-        background: rgba(0, 0, 0, 0.7);
-      }
-      main section {
-        padding: 1rem 0;
-        flex: 1 0 auto;
-      }
-      main section a {
-        display: block;
+      header h1 {
         font-size: 2rem;
-        line-height: 2rem;
-        margin: 1rem 0;
-      }
-      main section svg {
-        height: 2rem;
-        width: 2rem;
-        vertical-align: middle;
-        margin-left: 1rem;
+        margin-bottom: 0;
+        text-align: center;
       }
 
-      footer {
-        padding: 1rem 0;
+      header p {
+        text-align: center;
+        text-transform: uppercase;
       }
-      footer svg {
-        height: 3rem;
-        width: 3rem;
-        margin: 0 0.5rem;
+
+      .terminal {
       }
-      footer a:last-child svg,
-      footer a:first-child svg {
-        margin: 0;
+
+      .terminal__input_block {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+      }
+      .terminal__input_decoration {
+        margin-right: 1rem;
+      }
+
+      .terminal__input_wrapper {
+        flex: 1;
+        min-width: 0;
+        position: relative;
+      }
+      .terminal__input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid transparent;
+        color: white;
+        font-size: 1rem;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        box-sizing: border-box;
+      }
+      .terminal__input:focus,
+      .terminal__input:hover {
+        outline: none;
+        border-bottom-color: white;
+      }
+      .terminal__input_shadow {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+        font-size: 1rem;
+        z-index: 1;
+        opacity: 0.5;
+        box-sizing: border-box;
       }
     </style>
   </head>
   <body>
-    <!-- Icons borrowed from https://fontawesome.com/ under license https://fontawesome.com/license/free and from https://simpleicons.org/ -->
-    <svg xmlns="http://www.w3.org/2000/svg" display="none">
-      <symbol id="file" viewBox="0 0 384 512">
-        <title>File icon</title>
-        <path
-          fill="currentColor"
-          d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"
-        />
-      </symbol>
-      <symbol id="envelope" viewBox="0 0 512 512">
-        <title>Envelope icon</title>
-        <path
-          fill="currentColor"
-          d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
-        ></path>
-      </symbol>
-      <symbol id="film" viewBox="0 0 512 512">
-        <title>Film icon</title>
-        <path
-          fill="currentColor"
-          d="M488 64h-8v20c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12V64H96v20c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12V64h-8C10.7 64 0 74.7 0 88v336c0 13.3 10.7 24 24 24h8v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h320v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h8c13.3 0 24-10.7 24-24V88c0-13.3-10.7-24-24-24zM96 372c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm272 208c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm0-168c0 6.6-5.4 12-12 12H156c-6.6 0-12-5.4-12-12v-96c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v96zm112 152c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40z"
-        ></path>
-      </symbol>
-      <symbol id="location" viewBox="0 0 384 512">
-        <title>Location icon</title>
-        <path
-          fill="currentColor"
-          d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
-        ></path>
-      </symbol>
-      <symbol id="github" viewBox="0 0 24 24">
-        <title>GitHub icon</title>
-        <path
-          fill="currentColor"
-          d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-        />
-      </symbol>
-      <symbol id="linkedin" viewBox="0 0 24 24">
-        <title>LinkedIn icon</title>
-        <path
-          fill="currentColor"
-          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-        />
-      </symbol>
-      <symbol id="blog" viewBox="0 0 448 512">
-        <title>Blog icon</title>
-        <path
-          fill="currentColor"
-          d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-        />
-      </symbol>
-      <symbol id="twitter" viewBox="0 0 24 24">
-        <title>Twitter icon</title>
-        <path
-          fill="currentColor"
-          d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
-        />
-      </symbol>
-    </svg>
-
-    <aside>
-      <figure>
-        <img src="photo-hd.jpg" srcset="photo-hd.jpg 640w, photo-uhd.jpg 1280w" sizes="(max-height: 1080px) 640px, 1280px" alt="Photo" />
-      </figure>
-    </aside>
     <main>
       <header>
-        <h1>
-          Andrey Goncharov
-          <p class="location">
-            London, UK<svg><use href="#location" /></svg>
-          </p>
-        </h1>
-        <p>
-          Senior software engineer at Facebook<br />Full-stack TypeScript and JavaScript developer<br />Speaker<br />Writer<br />Open-source enthusiast<br />Founder of BeerJS Voronezh<br />PC at React Global Summit 2021, ITeaConf 2021<br />Box, snowboard and travel in my spare time
-        </p>
+        <h1>Andrey Goncharov</h1>
+        <p>Software engineer</p>
+        <p>London, UK</p>
       </header>
-      <section>
-        <nav>
-          <a href="https://blog.goncharov.page/" target="_blank" rel="noopener noreferrer"
-            >Blog<svg><use href="#blog" /></svg
-          ></a>
-          <a href="https://github.com/aigoncharov" target="_blank" rel="noopener noreferrer"
-            >Github<svg><use href="#github" /></svg
-          ></a>
-          <a href="https://github.com/aigoncharov/talks" target="_blank" rel="noopener noreferrer"
-            >Talks<svg><use href="#film" /></svg
-          ></a>
-          <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
-            >Resume<svg><use href="#file" /></svg
-          ></a>
-        </nav>
+      <section class="terminal">
+        <p class="terminal__input_block">
+          <span class="terminal__input_decoration">></span>
+          <span class="terminal__input_wrapper">
+            <input id="terminal_input" class="terminal__input" placeholder="Type 'help' for the list of commands" />
+            <input id="terminal_shadow" tabindex="-1" class="terminal__input_shadow" />
+          </span>
+        </p>
+        <p id="terminal_res" class="terminal__res"></p>
       </section>
-      <footer>
-        <nav>
-          <a href="mailto:andrey@goncharov.page"
-            ><svg><use href="#envelope" /></svg
-          ></a>
-          <a href="https://twitter.com/ai_goncharov" target="_blank" rel="noopener noreferrer"
-            ><svg><use href="#twitter" /></svg
-          ></a>
-          <a href="https://www.linkedin.com/in/aigoncharov" target="_blank" rel="noopener noreferrer"
-            ><svg><use href="#linkedin" /></svg
-          ></a>
-        </nav>
-      </footer>
     </main>
+    <script>
+      const contacts = [
+        {
+          name: "Email",
+          href: "mailto:andrey@goncharov.page",
+        },
+        {
+          name: "Twitter",
+          href: "https://twitter.com/ai_goncharov",
+        },
+        {
+          name: "LinkedIn",
+          href: "https://www.linkedin.com/in/aigoncharov",
+        },
+      ];
+
+      const commands = {
+        help: {
+          description: "Lists available commands",
+          handler: (resNode) => {
+            const commandsList = document.createElement("ul");
+
+            commandsList.append(
+              ...Object.entries(commands).map(([command, { description }]) => {
+                const li = document.createElement("li");
+                li.textContent = `${command} - ${description}`;
+                return li;
+              })
+            );
+
+            resNode.appendChild(commandsList);
+          },
+        },
+        about: {
+          description: "Displays my bio",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my bio";
+            window.open("TODO", "_blank").focus();
+          },
+        },
+        read: {
+          description: "Redirects to my blog",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my blog";
+            window.open("https://blog.goncharov.page/", "_blank").focus();
+          },
+        },
+        code: {
+          description: "Redirects to my Github",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my Github";
+            window.open("https://github.com/aigoncharov", "_blank").focus();
+          },
+        },
+        watch: {
+          description: "Redirects to my talks",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my talks";
+            window.open("https://github.com/aigoncharov/talks", "_blank").focus();
+          },
+        },
+        hire: {
+          description: "Redirects to my resume",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my resume";
+            window.open("https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing", "_blank").focus();
+          },
+        },
+        contact: {
+          description: "Show my contacts",
+          handler: (resNode) => {
+            const contactsList = document.createElement("ul");
+
+            contactsList.append(
+              ...contacts.map(({ name, href }) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.textContent = name;
+                a.href = href;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                li.appendChild(a);
+                return li;
+              })
+            );
+
+            resNode.appendChild(contactsList);
+          },
+        },
+      };
+
+      const unknownCommandHandler = (resNode) => {
+        resNode.textContent = "Unknown command";
+      };
+
+      class CommandHistory {
+        constructor(maxSize) {
+          this.data = [];
+          this.pointer = null;
+          this.maxSize = maxSize;
+        }
+
+        append(item) {
+          this.pointer = null;
+
+          const existingHistoryItemI = this.data.indexOf(item);
+          if (existingHistoryItemI !== -1) {
+            this.data.splice(existingHistoryItemI, 1);
+          }
+
+          this.data.push(item);
+
+          if (this.data.length > this.maxSize) {
+            this.data.shift();
+          }
+        }
+
+        prev() {
+          if (!this.data.length) {
+            return "";
+          }
+
+          if (this.pointer === null || this.pointer > this.data.length || this.pointer <= 0) {
+            this.pointer = this.data.length;
+          }
+
+          this.pointer--;
+
+          return this.data[this.pointer];
+        }
+
+        next() {
+          if (!this.data.length) {
+            return "";
+          }
+
+          if (this.pointer === null || this.pointer >= this.data.length - 1 || this.pointer < 0) {
+            this.pointer = -1;
+          }
+
+          this.pointer++;
+
+          return this.data[this.pointer];
+        }
+      }
+      const commandHistory = new CommandHistory(Object.keys(commands).length);
+
+      const terminalInput = document.getElementById("terminal_input");
+      const terminalShadow = document.getElementById("terminal_shadow");
+      const terminalRes = document.getElementById("terminal_res");
+
+      const findMatchingCommand = (currentVal) =>
+        currentVal ? Object.keys(commands).find((commandName) => commandName.startsWith(currentVal) && commandName !== currentVal) : undefined;
+      const findExactCommand = (currentVal) => Object.keys(commands).find((commandName) => commandName === currentVal);
+
+      terminalInput.addEventListener(
+        "input",
+        (e) => {
+          let newValue = terminalInput.value;
+
+          const matchingCommand = findMatchingCommand(newValue);
+          if (matchingCommand) {
+            newValue = matchingCommand;
+          }
+
+          terminalShadow.value = newValue;
+        },
+        { passive: true }
+      );
+
+      const setTerminalAndShadow = (value) => {
+        terminalInput.value = value;
+        terminalShadow.value = value;
+      };
+
+      terminalInput.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "Tab") {
+          const matchingCommand = findMatchingCommand(terminalInput.value);
+          if (matchingCommand) {
+            e.preventDefault();
+            setTerminalAndShadow(matchingCommand);
+          }
+          return;
+        }
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          const historyCommand = commandHistory.prev();
+          if (historyCommand) {
+            setTerminalAndShadow(historyCommand);
+          }
+          return;
+        }
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          const historyCommand = commandHistory.next();
+          if (historyCommand) {
+            setTerminalAndShadow(historyCommand);
+          }
+          return;
+        }
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const exactCommand = findExactCommand(terminalInput.value);
+
+          if (exactCommand) {
+            commandHistory.append(exactCommand);
+          }
+
+          const commandHandler = exactCommand ? commands[exactCommand].handler : unknownCommandHandler;
+
+          terminalRes.textContent = "";
+          commandHandler(terminalRes);
+
+          setTerminalAndShadow("");
+
+          return;
+        }
+      });
+    </script>
   </body>
 </html>
