@@ -416,6 +416,7 @@
           },
         },
       };
+      console.log(`Try these secret commands: ${Object.keys(secretCommands).toString()}`);
 
       const unknownCommandHandler = (resNode) => {
         resNode.textContent = "Unknown command";
