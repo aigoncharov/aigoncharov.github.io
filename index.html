@@ -405,6 +405,18 @@
         },
       };
 
+      const secretCommands = {
+        "red pill": {
+          handler: (resNode) => {
+            const image = document.createElement("img");
+            image.src = "https://github.com/aigoncharov/aigoncharov.github.io/blob/master/secret.gif?raw=true";
+            image.style = "height: auto; width: 100%;";
+            image.alt = "Wake up, Neo";
+            resNode.appendChild(image);
+          },
+        },
+      };
+
       const unknownCommandHandler = (resNode) => {
         resNode.textContent = "Unknown command";
       };
@@ -479,7 +491,6 @@
 
       const findMatchingCommand = (currentVal) =>
         currentVal ? Object.keys(commands).find((commandName) => commandName.startsWith(currentVal) && commandName !== currentVal) : undefined;
-      const findExactCommand = (currentVal) => Object.keys(commands).find((commandName) => commandName === currentVal);
 
       terminalInput.addEventListener(
         "input",
@@ -539,8 +550,8 @@
 
           commandHistory.append(commandCandidate);
 
-          const exactCommand = findExactCommand(commandCandidate);
-          const commandHandler = exactCommand ? commands[exactCommand].handler : unknownCommandHandler;
+          const exactCommand = commands[commandCandidate] ?? secretCommands[commandCandidate];
+          const commandHandler = exactCommand ? exactCommand.handler : unknownCommandHandler;
 
           terminalRes.textContent = "";
           commandHandler(terminalRes);
