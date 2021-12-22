@@ -82,38 +82,59 @@
     />
 
     <style>
+      :root {
+        --colorBackground: 255, 255, 255;
+        --colorText: 0, 0, 0;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --colorBackground: 0, 0, 0;
+          --colorText: 255, 255, 255;
+        }
+      }
+
       html {
         height: 100%;
       }
       body {
         min-height: 100%;
-        background-color: black;
+        background-color: rgb(var(--colorBackground));
         position: relative;
-        color: white;
+        color: rgb(var(--colorText));
         font-family: "Share Tech Mono", monospace;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+        padding: 1rem;
+        box-sizing: border-box;
       }
 
       a {
-        color: white;
-        text-decoration: none;
+        color: rgb(var(--colorText));
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-color: rgb(var(--colorText));
+        text-decoration-thickness: 1px;
       }
       a:hover,
       a:focus,
       a:visited {
-        opacity: 0.7;
+        color: rgba(var(--colorText), 0.5);
+      }
+      a:focus {
+        outline: 1px solid rgb(var(--colorText));
       }
 
-      header {
-        margin-bottom: 4rem;
+      p {
+        margin: 1rem 0;
       }
 
       header h1 {
         font-size: 2rem;
-        margin-bottom: 0;
         text-align: center;
+        margin: 1rem 0;
       }
 
       header p {
@@ -121,7 +142,19 @@
         text-transform: uppercase;
       }
 
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 22rem;
+      }
+
       .terminal {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 100%;
       }
 
       .terminal__input_block {
@@ -139,22 +172,28 @@
         min-width: 0;
         position: relative;
       }
+
       .terminal__input {
         background-color: transparent;
         border: none;
         border-bottom: 1px solid transparent;
-        color: white;
+        color: rgb(var(--colorText));
         font-size: 1rem;
         height: 100%;
         width: 100%;
         position: relative;
         z-index: 10;
         box-sizing: border-box;
+        min-width: 0;
+      }
+      .terminal__input::placeholder {
+        color: var(--colorText);
+        opacity: 0.5;
       }
       .terminal__input:focus,
       .terminal__input:hover {
         outline: none;
-        border-bottom-color: white;
+        border-bottom-color: rgb(var(--colorText));
       }
       .terminal__input_shadow {
         position: absolute;
@@ -165,12 +204,75 @@
         height: 100%;
         background-color: transparent;
         border: none;
-        border-bottom: 1px solid white;
-        color: white;
+        border-bottom: 1px solid rgb(var(--colorText));
+        color: var(--colorText);
         font-size: 1rem;
         z-index: 1;
         opacity: 0.5;
         box-sizing: border-box;
+        min-width: 0;
+      }
+
+      .terminal__input_wrapper.autocomplete {
+        animation: shake 200ms;
+      }
+
+      .terminal__res {
+        padding-left: 1.5rem;
+      }
+
+      .terminal__res ul {
+        padding-left: 1rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      footer {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.7rem;
+      }
+
+      footer button {
+        text-transform: uppercase;
+        background: rgb(var(--colorBackground));
+        border: 1px solid rgb(var(--colorText));
+        color: var(--colorText);
+        border-radius: 0;
+        padding: 0.25rem 0.5rem;
+        opacity: 0.5;
+      }
+      footer button:hover,
+      footer button:focus {
+        cursor: pointer;
+        opacity: 1;
+        outline: none;
+      }
+
+      /* https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
       }
     </style>
   </head>
@@ -181,17 +283,37 @@
         <p>Software engineer</p>
         <p>London, UK</p>
       </header>
-      <section class="terminal">
+      <section class="terminal" id="terminal">
         <p class="terminal__input_block">
           <span class="terminal__input_decoration">></span>
-          <span class="terminal__input_wrapper">
-            <input id="terminal_input" class="terminal__input" placeholder="Type 'help' for the list of commands" />
-            <input id="terminal_shadow" tabindex="-1" class="terminal__input_shadow" />
+          <span id="terminal-input-wrapper" class="terminal__input_wrapper">
+            <input id="terminal-input" class="terminal__input" placeholder="Type 'help' for the list of commands" />
+            <input id="terminal-shadow" tabindex="-1" class="terminal__input_shadow" />
           </span>
         </p>
-        <p id="terminal_res" class="terminal__res"></p>
+        <p id="terminal-res" class="terminal__res" aria-live="assertive"></p>
+      </section>
+      <section aria-live="assertive">
+        <div id="text-version" class="hidden">
+          <p>Hi! My name is Andrey. I am a senior software engineer at Facebook, and OMSCS student at Georgia Tech.</p>
+          <p>Speaker. Writer. OSS enthusiast.</p>
+          <p>
+            Check out my <a href="https://github.com/aigoncharov/talks#bio" rel="noopener" autofocus>full bio</a>,
+            <a href="https://blog.goncharov.page/" rel="noopener">my blog</a>, <a href="https://github.com/aigoncharov" rel="noopener">my Github</a>,
+            <a href="https://github.com/aigoncharov/talks" rel="noopener">my talks</a>, and
+            <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" rel="noopener">my resume</a>.
+          </p>
+          <p>
+            Feel free to drop me a DM on <a href="https://twitter.com/ai_goncharov" rel="noopener">Twitter</a>,
+            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>, or by
+            <a href="mailto:andrey@goncharov.page" rel="noopener">email</a>.
+          </p>
+        </div>
       </section>
     </main>
+    <footer id="footer">
+      <button id="hate-terminal-btn">I hate terminals</button>
+    </footer>
     <script>
       const contacts = [
         {
@@ -210,7 +332,7 @@
 
       const commands = {
         help: {
-          description: "Lists available commands",
+          description: "List available commands",
           handler: (resNode) => {
             const commandsList = document.createElement("ul");
 
@@ -226,38 +348,38 @@
           },
         },
         about: {
-          description: "Displays my bio",
+          description: "Display my bio",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my bio";
-            window.open("TODO", "_blank").focus();
+            window.open("https://github.com/aigoncharov/talks#bio", "_blank", "noopener").focus();
           },
         },
         read: {
-          description: "Redirects to my blog",
+          description: "Redirect to my blog",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my blog";
-            window.open("https://blog.goncharov.page/", "_blank").focus();
+            window.open("https://blog.goncharov.page/", "_blank", "noopener").focus();
           },
         },
         code: {
-          description: "Redirects to my Github",
+          description: "Redirect to my Github",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my Github";
-            window.open("https://github.com/aigoncharov", "_blank").focus();
+            window.open("https://github.com/aigoncharov", "_blank", "noopener").focus();
           },
         },
         watch: {
-          description: "Redirects to my talks",
+          description: "Redirect to my talks",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my talks";
-            window.open("https://github.com/aigoncharov/talks", "_blank").focus();
+            window.open("https://github.com/aigoncharov/talks", "_blank", "noopener").focus();
           },
         },
         hire: {
-          description: "Redirects to my resume",
+          description: "Redirect to my resume",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my resume";
-            window.open("https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing", "_blank").focus();
+            window.open("https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing", "_blank", "noopener").focus();
           },
         },
         contact: {
@@ -272,7 +394,7 @@
                 a.textContent = name;
                 a.href = href;
                 a.target = "_blank";
-                a.rel = "noopener noreferrer";
+                a.rel = "noopener";
                 li.appendChild(a);
                 return li;
               })
@@ -287,6 +409,7 @@
         resNode.textContent = "Unknown command";
       };
 
+      const COMMAND_HISTORY_MAX_SIZE = 10;
       class CommandHistory {
         constructor(maxSize) {
           this.data = [];
@@ -337,11 +460,22 @@
           return this.data[this.pointer];
         }
       }
-      const commandHistory = new CommandHistory(Object.keys(commands).length);
+      const commandHistory = new CommandHistory(COMMAND_HISTORY_MAX_SIZE);
 
-      const terminalInput = document.getElementById("terminal_input");
-      const terminalShadow = document.getElementById("terminal_shadow");
-      const terminalRes = document.getElementById("terminal_res");
+      const terminalInput = document.getElementById("terminal-input");
+      const terminalShadow = document.getElementById("terminal-shadow");
+      const terminalRes = document.getElementById("terminal-res");
+      const terminalInputWrapper = document.getElementById("terminal-input-wrapper");
+      const terminal = document.getElementById("terminal");
+      const footer = document.getElementById("footer");
+      const hateTerminalBtn = document.getElementById("hate-terminal-btn");
+      const textVersion = document.getElementById("text-version");
+
+      hateTerminalBtn.addEventListener("click", () => {
+        footer.remove();
+        terminal.remove();
+        textVersion.classList.remove("hidden");
+      });
 
       const findMatchingCommand = (currentVal) =>
         currentVal ? Object.keys(commands).find((commandName) => commandName.startsWith(currentVal) && commandName !== currentVal) : undefined;
@@ -350,6 +484,8 @@
       terminalInput.addEventListener(
         "input",
         (e) => {
+          terminalInputWrapper.classList.remove("autocomplete");
+
           let newValue = terminalInput.value;
 
           const matchingCommand = findMatchingCommand(newValue);
@@ -373,6 +509,7 @@
           if (matchingCommand) {
             e.preventDefault();
             setTerminalAndShadow(matchingCommand);
+            terminalInputWrapper.classList.add("autocomplete");
           }
           return;
         }
@@ -394,12 +531,15 @@
         }
         if (e.key === "Enter") {
           e.preventDefault();
-          const exactCommand = findExactCommand(terminalInput.value);
 
-          if (exactCommand) {
-            commandHistory.append(exactCommand);
+          const commandCandidate = terminalInput.value;
+          if (!commandCandidate) {
+            return;
           }
 
+          commandHistory.append(commandCandidate);
+
+          const exactCommand = findExactCommand(commandCandidate);
           const commandHandler = exactCommand ? commands[exactCommand].handler : unknownCommandHandler;
 
           terminalRes.textContent = "";
