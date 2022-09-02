@@ -271,6 +271,23 @@
         <p>Software engineer</p>
         <p>London, UK</p>
       </header>
+      <section>
+        <div id="text-version">
+          <p>Hiya! My name is Andrey G. I am a senior software engineer at Facebook, and OMSCS student at Georgia Tech.</p>
+          <p>Speaker. Writer. OSS enthusiast.</p>
+          <p>
+            Check out my <a href="https://github.com/aigoncharov" rel="noopener" autofocus>full bio</a>,
+            <a href="https://blog.goncharov.page/" rel="noopener">my blog</a>, <a href="https://github.com/aigoncharov" rel="noopener">my Github</a>,
+            <a href="https://github.com/aigoncharov/talks" rel="noopener">my talks</a>, and
+            <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" rel="noopener">my resume</a>.
+          </p>
+          <p>
+            Feel free to drop me a DM on <a href="https://twitter.com/ai_goncharov" rel="noopener">Twitter</a>,
+            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>, <a href="https://www.instagram.com/aigoncharov/" rel="noopener">Instagram</a>, or by
+            <a href="mailto:andrey@goncharov.ai" rel="noopener">email</a>.
+          </p>
+        </div>
+      </section>
       <section class="terminal" id="terminal">
         <p class="terminal__input_block">
           <span class="terminal__input_decoration">></span>
@@ -281,32 +298,13 @@
         </p>
         <p id="terminal-res" class="terminal__res" aria-live="assertive"></p>
       </section>
-      <section aria-live="assertive">
-        <div id="text-version" class="hidden">
-          <p>Hi! My name is Andrey. I am a senior software engineer at Facebook, and OMSCS student at Georgia Tech.</p>
-          <p>Speaker. Writer. OSS enthusiast.</p>
-          <p>
-            Check out my <a href="https://github.com/aigoncharov" rel="noopener" autofocus>full bio</a>,
-            <a href="https://blog.goncharov.page/" rel="noopener">my blog</a>, <a href="https://github.com/aigoncharov" rel="noopener">my Github</a>,
-            <a href="https://github.com/aigoncharov/talks" rel="noopener">my talks</a>, and
-            <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" rel="noopener">my resume</a>.
-          </p>
-          <p>
-            Feel free to drop me a DM on <a href="https://twitter.com/ai_goncharov" rel="noopener">Twitter</a>,
-            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>, or by
-            <a href="mailto:andrey@goncharov.page" rel="noopener">email</a>.
-          </p>
-        </div>
-      </section>
     </main>
-    <footer id="footer">
-      <button id="hate-terminal-btn">I hate terminals</button>
-    </footer>
+    <footer id="footer"></footer>
     <script>
       const contacts = [
         {
           name: "Email",
-          href: "mailto:andrey@goncharov.page",
+          href: "mailto:andrey@goncharov.ai",
         },
         {
           name: "Twitter",
@@ -315,6 +313,10 @@
         {
           name: "LinkedIn",
           href: "https://www.linkedin.com/in/aigoncharov",
+        },
+        {
+          name: "Instagram",
+          href: "https://www.instagram.com/aigoncharov/",
         },
       ];
 
@@ -469,14 +471,7 @@
       const terminalInputWrapper = document.getElementById("terminal-input-wrapper");
       const terminal = document.getElementById("terminal");
       const footer = document.getElementById("footer");
-      const hateTerminalBtn = document.getElementById("hate-terminal-btn");
       const textVersion = document.getElementById("text-version");
-
-      hateTerminalBtn.addEventListener("click", () => {
-        footer.remove();
-        terminal.remove();
-        textVersion.classList.remove("hidden");
-      });
 
       const findMatchingCommand = (currentVal) =>
         currentVal ? Object.keys(commands).find((commandName) => commandName.startsWith(currentVal) && commandName !== currentVal) : undefined;
