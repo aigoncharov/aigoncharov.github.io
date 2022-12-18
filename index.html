@@ -280,12 +280,13 @@
             <a href="https://blog.goncharov.page/" rel="noopener">my blog</a>, 
             <a href="https://github.com/aigoncharov" rel="noopener">my Github</a>, 
             <a href="https://github.com/aigoncharov/talks" rel="noopener">my talks</a>, 
+            <a href="https://t.me/aigoncharov_vs_world" rel="noopener">my Telegram channel</a>,
             <a href="https://42.goncharov.ai/l/uk-global-talent-visa-for-mortals" rel="noopener">UK Global Talent visa guide</a>, 
             <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" rel="noopener">my CV</a>.
           </p>
           <p>
             Stay in touch on <a href="https://hachyderm.io/@aigoncharov" rel="noopener">Mastodon</a>,
-            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>.
           </p>
         </div>
       </section>
@@ -343,6 +344,13 @@
             resNode.textContent = "Opened a new tab with my blog";
             window.open("https://blog.goncharov.page/", "_blank", "noopener").focus();
           },
+        },
+        read_ru: {
+          description: "Redirect to my Telegram channel",
+          handler: (resNode) => {
+            resNode.textContent = "Opended a new tab with my Telegram channel";
+            window.open("https://t.me/aigoncharov_vs_world", "_blank", "noopener").focus();
+          }
         },
         code: {
           description: "Redirect to my Github",
