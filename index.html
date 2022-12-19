@@ -277,7 +277,7 @@
           <p>📝 Wannabe writer. 🎙️ Occasional speaker. 💻 Open-source enthusiast. 🇬🇧 Help people get their UK Global Talent visas.</p>
           <p>
             Check out my <a href="https://github.com/aigoncharov" rel="noopener" autofocus>full bio</a>,
-            <a href="https://blog.goncharov.page/" rel="noopener">my blog</a>, 
+            <a href="https://blog.goncharov.ai/" rel="noopener">my blog</a>, 
             <a href="https://github.com/aigoncharov" rel="noopener">my Github</a>, 
             <a href="https://github.com/aigoncharov/talks" rel="noopener">my talks</a>, 
             <a href="https://t.me/aigoncharov_vs_world" rel="noopener">my Telegram channel</a>,
@@ -285,8 +285,11 @@
             <a href="https://docs.google.com/document/d/1RPYnsaEfPMjty0PuX15qI_BG1eO-IJIdPejH67cdi64/edit?usp=sharing" rel="noopener">my CV</a>.
           </p>
           <p>
-            Stay in touch on <a href="https://hachyderm.io/@aigoncharov" rel="noopener">Mastodon</a>,
-            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>.
+            Stay in touch! <a href="https://hachyderm.io/@aigoncharov" rel="noopener">Mastodon</a>,
+            <a href="https://www.linkedin.com/in/aigoncharov" rel="noopener">LinkedIn</a>,
+            <a href="https://twitter.com/ai_goncharov" rel="noopener">Twitter</a>,
+            <a href="https://blog.goncharov.ai/newsletter" rel="noopener">newsletter</a>,
+            <a href="https://t.me/aigoncharov_vs_world" rel="noopener">Telegram</a>.
           </p>
         </div>
       </section>
@@ -311,6 +314,10 @@
         {
           name: "LinkedIn",
           href: "https://www.linkedin.com/in/aigoncharov",
+        },
+        {
+          name: "Twitter",
+          href: "https://twitter.com/ai_goncharov",
         },
       ];
 
@@ -342,7 +349,7 @@
           description: "Redirect to my blog",
           handler: (resNode) => {
             resNode.textContent = "Opened a new tab with my blog";
-            window.open("https://blog.goncharov.page/", "_blank", "noopener").focus();
+            window.open("https://blog.goncharov.ai/", "_blank", "noopener").focus();
           },
         },
         read_ru: {
@@ -351,6 +358,13 @@
             resNode.textContent = "Opended a new tab with my Telegram channel";
             window.open("https://t.me/aigoncharov_vs_world", "_blank", "noopener").focus();
           }
+        },
+        newsletter: {
+          description: "Redirect to my newsletter",
+          handler: (resNode) => {
+            resNode.textContent = "Opened a new tab with my newsletter";
+            window.open("https://blog.goncharov.ai/newsletter", "_blank", "noopener").focus();
+          },
         },
         code: {
           description: "Redirect to my Github",
